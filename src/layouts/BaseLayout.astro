@@ -1,0 +1,33 @@
+---
+// This is the frontmatter where component logic goes
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    
+    <!-- Navigation Menu -->
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+    </nav>
+
+    <!-- Header line to show the current page title -->
+    <h1>{pageTitle}</h1>
+
+    <!-- This slot element is where the unique content of each page will be injected -->
+    <slot />
+
+    <!-- Shared Footer -->
+    <footer>
+      <p>&copy; 2026 Noah Hess. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
