@@ -10,7 +10,6 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    
     <!-- Navigation Menu -->
     <nav>
       <a href="/">Home</a>
@@ -28,6 +27,94 @@ const { pageTitle } = Astro.props;
     <footer>
       <p>&copy; 2026 Noah Hess. All rights reserved.</p>
     </footer>
-
   </body>
 </html>
+
+<style is:global>
+  /* 1. Global Reset & Core Variables */
+  :root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --link-color: #0066cc;
+    --max-width: 750px;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif;
+    line-height: 1.6;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* 2. Typography Styling */
+  h1,
+  h2,
+  h3 {
+    color: #111111;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.3rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  /* 3. Navigation Bar Layout */
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+
+  nav a:hover {
+    color: var(--link-color);
+  }
+
+  /* 4. Content Block Spacing */
+  section,
+  article {
+    margin-bottom: 2.5rem;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cccccc;
+    margin: 2rem 0;
+  }
+
+  footer {
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: #666666;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+  }
+</style>
