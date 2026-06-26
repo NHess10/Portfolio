@@ -1,0 +1,126 @@
+---
+// src/components/Carousel.astro
+---
+
+<div class="carousel-container">
+    <button id="prevBtn" class="control-btn" disabled>←</button>
+    <div class="carousel-viewport">
+        <div class="carousel-slider">
+            <slot />
+        </div>
+    </div>
+    <button id="nextBtn" class="control-btn">→</button>
+</div>
+
+<style>
+    .carousel-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0rem;
+        margin: 2rem 0;
+    }
+
+    .carousel-viewport {
+        max-width: 1000px;
+        overflow: hidden;
+        padding: 1.5rem 0;
+
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            #000 200px,
+            #000 800px,
+            transparent 100%
+        );
+
+        /* Standard property */
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            #000 200px,
+            #000 800px,
+            transparent 100%
+        );
+    }
+
+    .carousel-slider {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        width: max-content;
+        align-items: center;
+        padding-left: 200px;
+        transition: transform 0.4s ease;
+    }
+
+    .control-btn {
+        background: #212529;
+        color: #ffffff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.2 rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .control-btn:hover:not(:disabled) {
+        background: #0066cc;
+        transform: scale(1.05);
+    }
+
+    .control-btn:disabled {
+        background: #e0e0e0;
+        color: #a6a6a6;
+        cursor: not-allowed;
+    }
+</style>
+
+<script>
+    const slider = document.querySelector(".carousel-slider") as HTMLElement;
+    const prevBtn = document.getElementById("prevBtn") as HTMLButtonElement;
+    const nextBtn = document.getElementById("nextBtn") as HTMLButtonElement;
+
+    let currentIndex = 0;
+    const cards = slider.children;
+    const maxIndex = cards.length - 1;
+    const stepDimension = 632;
+
+    function moveTrack() {
+        const translationAmount = currentIndex * stepDimension;
+        slider.style.transform = `translateX(-${translationAmount}px)`;
+
+        Array.from(cards).forEach((card, index) => {
+            if (index === currentIndex) {
+                card.classList.add("active");
+                card.classList.remove("inactive");
+            } else {
+                card.classList.add("inactive");
+                card.classList.remove("active");
+            }
+        });
+
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxIndex;
+    }
+
+    nextBtn.addEventListener("click", () => {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            moveTrack();
+        }
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            moveTrack();
+        }
+    });
+</script>
