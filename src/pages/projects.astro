@@ -2,13 +2,17 @@
 // src/pages/projects.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Carousel from "../components/Carousel.astro";
+
+import { Image } from "astro:assets";
+import WingDesignCover from "../assets/WingDesignCover.png";
 ---
 
 <BaseLayout pageTitle="My Projects">
   <p>
     A collection of my engineering projects, design work, and academic
     laboratory documentation. Each project represents a hands-on application of
-    technical theory to physical or digital solutions.
+    technical theory to physical or digital solutions. Please click into any of
+    them to learn more about the project!
   </p>
 
   <Carousel>
@@ -32,6 +36,11 @@ import Carousel from "../components/Carousel.astro";
       </article>
     </div>
     <div class="project-card inactive">
+      <Image
+        src={WingDesignCover}
+        width={536}
+        alt="VTOL UAV Project CFD Simulation Results"
+      />
       <article>
         <h2>VTOL UAV Aileron Wing Design</h2>
         <ul>
@@ -224,7 +233,10 @@ import Carousel from "../components/Carousel.astro";
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid #e0e0e0;
-    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease,
+      filter 0.4s ease;
   }
 
   .project-card.active {
