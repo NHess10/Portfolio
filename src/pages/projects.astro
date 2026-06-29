@@ -38,7 +38,7 @@ import WingDesignCover from "../assets/WingDesignCover.png";
     <div class="project-card inactive">
       <Image
         src={WingDesignCover}
-        width={536}
+        class="project-image"
         alt="VTOL UAV Project CFD Simulation Results"
       />
       <article>
@@ -243,11 +243,18 @@ import WingDesignCover from "../assets/WingDesignCover.png";
     transform: scale(1);
     opacity: 1;
     filter: blur(0px);
+    overflow: hidden;
   }
 
   .project-card.inactive {
     transform: scale(0.95);
     opacity: 0.5;
     filter: blur(2px);
+  }
+
+  .project-image {
+    margin: -2rem;
+    width: 600px;
+    height: auto;
   }
 </style>
