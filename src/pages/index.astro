@@ -4,6 +4,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout pageTitle="Home">
+  <!-- Hero Section: Big Typography & Punchy Status -->
+  <section class="hero">
+    <div class="status-badge">
+      <span class="dot"></span> Available for May 2027 Internships
+    </div>
+
+    <h1 class="hero-title">
+      Noah Hess <br />
+      <span class="subtitle">Engineering & Design</span>
+    </h1>
+
+    <p class="hero-intro">
+      Focused on building clean, efficient solutions to complext technical
+      challenges.
+    </p>
+
+    <div class="quick-links">
+      <a href="mailto:noahmichaelhess@gmail.com" class="magnetic-btn">Email</a>
+      <a
+        href="http://www.linkedin.com/in/noah-hess/"
+        class="magnetic-btn"
+        target="_blank">LinkedIn</a
+      >
+    </div>
+  </section>
+
+  <!-- Selected Work Preview Section -->
   <section>
     <h2>Hello! My name is Noah.</h2>
     <p>
@@ -29,66 +56,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <a href="http://www.linkedin.com/in/noah-hess/">Noah Hess</a>
     </p>
   </section>
-
-  <section>
-    <h2>Personal Summary</h2>
-    <p>
-      I’m a personable and approachable individual who thrives on connection,
-      creativity, and learning. Having grown up traveling, playing team sports
-      (with basketball as a lifelong favourite), training in martial arts, and
-      exploring creative interests like music, I’ve developed a deep
-      appreciation for new experiences and diverse perspectives. Furthermore,
-      moving from Ontario to British Columbia for school has strengthened my
-      love for nature and the opportunities to hike and adventure. I’m always
-      looking for chances to explore, learn, and create.
-    </p>
-  </section>
-
-  <section>
-    <h2>Professional Summary</h2>
-    <p>
-      I’m a confident and collaborative professional who enjoys working in
-      project-based environments and having the opportunity to step into
-      leadership roles. I’m ambitious, hardworking, and like to take on
-      challenges with a sense of initiative and follow-through. My natural
-      attention to detail helps me stay organized, plan effectively, and keep
-      projects on track. I’m passionate about seeking new experiences that allow
-      me to learn, grow, create, and collaborate with others.
-    </p>
-  </section>
-
-  <section>
-    <h2>Soft Skills</h2>
-    <ul>
-      <li>Communication</li>
-      <li>Organization</li>
-      <li>Attention to Detail</li>
-      <li>Time Management</li>
-      <li>Discipline</li>
-      <li>Ambition</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Technical Interests</h2>
-    <ul>
-      <li>Industrial Design</li>
-      <li>Mechanical Design</li>
-      <li>Robotics</li>
-      <li>Automation Technology</li>
-      <li>Machine Learning</li>
-      <li>Automotive</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Explore My Work</h2>
-    <p>
-      If you would like to see the specific documentation, calculations, and
-      designs from my past projects, head over to the <a href="/projects"
-        >Projects page</a
-      >. To read more about my background, technical skillsets, and academic
-      timeline, visit the <a href="/about">About page</a>.
-    </p>
-  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding: 6rem 0 4rem;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  .subtitle {
+    opacity: 0.4;
+    font-weight: 400;
+  }
+  .hero-intro {
+    font-size: 1.25rem;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+</style>
