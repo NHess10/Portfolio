@@ -11,20 +11,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
 
     <h1 class="hero-title">
-      Noah Hess <br />
-      <span class="subtitle">Engineering & Design</span>
+      <span class="hero-name">Noah Hess</span>
+      <span class="hero-subtitle"> Student</span>
+      <span class="hero-subtitle">Engineering & Design</span>
     </h1>
 
-    <p class="hero-intro">
-      Focused on building clean, efficient solutions to complext technical
-      challenges.
-    </p>
-
     <div class="quick-links">
-      <a href="mailto:noahmichaelhess@gmail.com" class="magnetic-btn">Email</a>
+      <a href="mailto:noahmichaelhess@gmail.com" class="hero-button">Email</a>
       <a
         href="http://www.linkedin.com/in/noah-hess/"
-        class="magnetic-btn"
+        class="hero-button"
         target="_blank">LinkedIn</a
       >
     </div>
@@ -79,19 +75,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border-radius: 50%;
   }
   .hero-title {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-name {
     font-size: clamp(3rem, 7vw, 6rem);
     line-height: 1.05;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
-  .subtitle {
+  .hero-subtitle {
+    font-size: clamp(2rem, 4vw, 4rem);
     opacity: 0.4;
+    line-height: 1.05;
     font-weight: 400;
   }
-  .hero-intro {
-    font-size: 1.25rem;
-    max-width: 600px;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
+  .quick-links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .hero-button {
+    background-color: #10b981;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 9999px;
+    padding: 0.6rem 1.25rem;
+    font-size: 1 rem;
+    font-weight: 500;
+    cursor: pointer;
   }
 </style>

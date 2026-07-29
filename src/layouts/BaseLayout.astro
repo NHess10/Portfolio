@@ -5,11 +5,13 @@ const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
+  <!-- Tab Title -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
   </head>
+
   <body>
     <!-- Navigation Menu -->
     <nav>
@@ -18,10 +20,7 @@ const { pageTitle } = Astro.props;
       <a href="/projects">Projects</a>
     </nav>
 
-    <!-- Header line to show the current page title -->
-    <h1>{pageTitle}</h1>
-
-    <!-- This slot element is where the unique content of each page will be injected -->
+    <!-- Page Content -->
     <slot />
 
     <!-- Shared Footer -->
@@ -30,6 +29,26 @@ const { pageTitle } = Astro.props;
     </footer>
   </body>
 </html>
+
+<script>
+  import { lazy } from "astro:schema";
+  import Lenis from "lenis";
+
+  //Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2, //Scroll inertia duration in seconds
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), //Custom easing curve
+    smoothWheel: true,
+  });
+
+  //Request Animation Frame loop to sync with the display refresh rate
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
 
 <style is:global>
   /* 1. Global Reset & Core Variables */
