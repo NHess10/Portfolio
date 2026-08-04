@@ -1,3 +1,16 @@
+# Personal Portfolio Website
+
+A personal portfolio website featuring an interactive layout, custom typography, and responsive design.
+
+## Tech Stack
+- HTML5
+- CSS3 (Flexbox & Custom Properties)
+
+## Setup & Local Development
+Simply open `index.html` in any modern browser to view the site locally.
+
+
+
 # Astro Starter Kit: Minimal
 
 ```sh
