@@ -88,17 +88,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="about-me">
     <div class="title">about me</div>
     <div class="about-cards">
-      <div class="card">
-        <a href="/about" class="redirect">general</a>
+      <div class="card card-general" class="general">
+        <a href="/about" class="redirect">
+          general
+          <div class="underline"></div>
+        </a>
       </div>
       <div class="card">
-        <a href="/education" class="redirect">school</a>
+        <a href="/education" class="redirect">
+          school
+          <div class="underline"></div>
+        </a>
       </div>
       <div class="card">
-        <a href="/professional" class="redirect">work</a>
+        <a href="/professional" class="redirect">
+          work
+          <div class="underline"></div>
+        </a>
       </div>
       <div class="card">
-        <a href="/projects" class="redirect">projects</a>
+        <a href="/projects" class="redirect">
+          projects
+          <div class="underline"></div>
+        </a>
       </div>
     </div>
   </section>
@@ -166,11 +178,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       position: relative;
       overflow: hidden;
       z-index: 1;
-      transition: background-color 0s 0.6s;
-    }
-    .hero-button.is-animating {
-      background-color: #cc1453;
-      transition-delay: 0.6s;
     }
     .hero-button::before {
       content: "";
@@ -183,28 +190,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       z-index: 2;
       rotate: -35deg;
       translate: -60% 60%;
-      transition: translate 0s;
-    }
-    .hero-button.is-animating::before {
-      translate: 0 0;
       transition: translate 0.6s ease;
     }
-    .hero-button::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background-color: #2766a5;
-      z-index: 3;
-      rotate: -35deg;
+    .hero-button:hover::before {
       translate: 0 0;
-      transition: translate 0.6s ease;
-    }
-    .hero-button.is-animating::after {
-      translate: -60% 60%;
-      transition: translate 0s;
     }
     .hero-button .icon {
       width: 35px;
@@ -213,7 +202,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       position: relative;
       z-index: 4;
     }
-    .hero-button.is-animating .icon {
+    .hero-button:hover .icon {
       transform: scale(1.1);
     }
     .description {
@@ -253,10 +242,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
     .card {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 20vw;
       width: 16vw;
+      overflow: hidden;
+      position: relative;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    .card-general::before {
+      background-image: url(../assets/WingDesignCover.png);
+    }
+    .card:has(.redirect:hover)::before {
+      transform: translateY(0);
     }
     .redirect {
       text-decoration: none;
@@ -264,22 +274,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       color: #212529;
       font-weight: 400;
       opacity: 0.4;
+      position: relative;
+      display: inline-block;
+    }
+    .underline {
+      height: 2px;
+      width: 100%;
+      bottom: 0px;
+      background: #212529;
+      position: absolute;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .redirect:hover .underline {
+      transform-origin: left;
+      transform: scaleX(1);
     }
   </style>
-
-  <script>
-    const heroButtons = document.querySelectorAll(".hero-button");
-
-    heroButtons.forEach((button) => {
-      button.addEventListener("mouseenter", () => {
-        if (button.classList.contains("is-animating")) return;
-
-        button.classList.add("is-animating");
-
-        setTimeout(() => {
-          button.classList.remove("is-animating");
-        }, 600);
-      });
-    });
-  </script>
 </BaseLayout>
