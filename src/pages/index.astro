@@ -88,25 +88,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="about-me">
     <div class="title">about me</div>
     <div class="about-cards">
-      <div class="card card-general" class="general">
+      <div class="card card-general">
         <a href="/about" class="redirect">
           general
           <div class="underline"></div>
         </a>
       </div>
-      <div class="card">
+      <div class="card card-education">
         <a href="/education" class="redirect">
           school
           <div class="underline"></div>
         </a>
       </div>
-      <div class="card">
+      <div class="card card-professional">
         <a href="/professional" class="redirect">
           work
           <div class="underline"></div>
         </a>
       </div>
-      <div class="card">
+      <div class="card card-projects">
         <a href="/projects" class="redirect">
           projects
           <div class="underline"></div>
@@ -234,6 +234,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       font-family: "Unbounded", sans-serif;
       font-size: 4vw;
       color: #2766a5;
+      padding-bottom: 1rem;
     }
     .about-cards {
       display: flex;
@@ -257,25 +258,40 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       left: 0;
       width: 100%;
       height: 100%;
+      opacity: 0.5;
       background-size: cover;
       background-position: center;
       transform: translateY(-100%);
       transition: transform 0.4s ease;
     }
     .card-general::before {
-      background-image: url(../assets/WingDesignCover.png);
+      background-image: url(../assets/AboutMeGeneral.jpg);
+    }
+    .card-education::before {
+      background-image: url(../assets/AboutMeEducation.jpg);
+    }
+    .card-professional::before {
+      background-image: url(../assets/AboutMeProfessional.jpg);
+    }
+    .card-projects:before {
+      background-image: url(../assets/AboutMeProjects.png);
     }
     .card:has(.redirect:hover)::before {
       transform: translateY(0);
     }
     .redirect {
+      font-family: "Unbounded", sans-serif;
       text-decoration: none;
-      font-size: 2vw;
+      font-size: 2.5vw;
       color: #212529;
       font-weight: 400;
       opacity: 0.4;
       position: relative;
       display: inline-block;
+      transition: opacity 0.4s ease;
+    }
+    .redirect:hover {
+      opacity: 1;
     }
     .underline {
       height: 2px;
