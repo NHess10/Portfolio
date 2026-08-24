@@ -1,6 +1,9 @@
 ---
 // src/pages/index.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { Image } from "astro:assets";
+import Headshot from "../assets/Headshot.jpg";
 ---
 
 <BaseLayout pageTitle="Home">
@@ -72,12 +75,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <section class="description">
+    <Image src={Headshot} class="headshot" alt="Noah Hess headshot" />
     <div class="three-words">
-      engaging<br />
+      engaged<br />
       curious<br />
       precise
     </div>
-    <div class="gap"></div>
     <div class="introduction">
       i enjoy<br /><strong>connecting</strong> with people,<br /><strong
         >exploring</strong
@@ -119,6 +122,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&display=swap");
     .hero {
       padding: 6rem 0 4rem;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100px;
+      width: 100vw;
+      height: 80%;
+      opacity: 0.4;
+      background-size: cover;
+      background-position: center;
+      background-image: url("../assets/HeroBackground.png");
     }
     .status-badge {
       padding-left: 1rem;
@@ -209,6 +224,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 4vw;
+      padding: 10rem 0 5rem;
+    }
+    .headshot {
+      height: 20rem;
+      width: auto;
     }
     .three-words {
       font-family: "Unbounded", sans-serif;
@@ -224,9 +245,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       font-weight: 300;
       color: #212529;
     }
-    .gap {
-      width: 4vw;
-    }
     .about-me {
       justify-items: center;
     }
@@ -234,7 +252,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       font-family: "Unbounded", sans-serif;
       font-size: 4vw;
       color: #2766a5;
-      padding-bottom: 1rem;
+      padding-bottom: 2rem;
     }
     .about-cards {
       display: flex;
@@ -250,6 +268,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       width: 16vw;
       overflow: hidden;
       position: relative;
+      background-color: #21252908;
     }
     .card::before {
       content: "";
