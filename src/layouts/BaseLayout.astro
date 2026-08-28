@@ -4,6 +4,7 @@
 const { pageTitle } = Astro.props;
 ---
 
+<!-- GLOBAL PAGE LAYOUT -->
 <html lang="en">
   <!-- Tab Title -->
   <head>
@@ -14,44 +15,33 @@ const { pageTitle } = Astro.props;
 
   <body>
     <!-- Navigation Menu -->
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/projects">Projects</a>
-    </nav>
+    <header class="site-header">
+      <nav class="nav-menu">
+        <a href="/" class="nav-text nav-home"> home </a>
+        <a href="/about" class="nav-text nav-about">about</a>
+        <a href="/professional" class="nav-text nav-work">work</a>
+        <a href="/projects" class="nav-text nav-projects">projects</a>
+      </nav>
+    </header>
 
     <!-- Page Content -->
-    <slot />
+    <main>
+      <slot />
+    </main>
 
-    <!-- Shared Footer -->
+    <!-- Footer -->
     <footer>
       <p>&copy; 2026 Noah Hess. All rights reserved.</p>
     </footer>
   </body>
 </html>
 
-<script>
-  import { lazy } from "astro:schema";
-  import Lenis from "lenis";
-
-  //Initialize Lenis
-  const lenis = new Lenis({
-    duration: 1.2, //Scroll inertia duration in seconds
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), //Custom easing curve
-    smoothWheel: true,
-  });
-
-  //Request Animation Frame loop to sync with the display refresh rate
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-</script>
-
+<!-- GLOBAL BASE STYLING-->
 <style is:global>
-  /* 1. Global Reset & Core Variables */
+  /* -------------- IMPORTS & VARIABLES --------------- */
+
+  @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&display=swap");
+
   :root {
     --bg-color: #f8f9fa;
     --text-color: #212529;
@@ -60,6 +50,65 @@ const { pageTitle } = Astro.props;
     scrollbar-gutter: stable;
   }
 
+  /* -------------------------------------------------- */
+
+  /* --------------------- HEADER --------------------- */
+
+  .site-header {
+    width: 100%;
+    height: 6rem;
+    padding: 0 15vw;
+    background-color: #e8e8e8;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-text {
+    text-decoration: none;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+    color: #989a9c;
+  }
+
+  .nav-text:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-home {
+    font-family: "Unbounded", sans-serif;
+    font-size: 1.5vw;
+  }
+
+  .nav-home:hover {
+    color: #2766a5;
+  }
+
+  .nav-about {
+    font-family: "Unbounded", sans-serif;
+    font-size: 1.5vw;
+  }
+
+  .nav-work {
+    font-family: "Unbounded", sans-serif;
+    font-size: 1.5vw;
+  }
+
+  .nav-projects {
+    font-family: "Unbounded", sans-serif;
+    font-size: 1.5vw;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* ---------------------- BODY ---------------------- */
+
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -67,12 +116,32 @@ const { pageTitle } = Astro.props;
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
       sans-serif;
     line-height: 1.6;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    margin: 0;
+    padding: 0;
   }
 
-  /* 2. Typography Styling */
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* --------------------- FOOTER --------------------- */
+
+  footer {
+    margin: 4rem;
+    font-size: 0.9rem;
+    color: #666666;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* ------------------- TYPOGRAPHY ------------------- */
+
   h1,
   h2,
   h3 {
@@ -80,7 +149,6 @@ const { pageTitle } = Astro.props;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
   }
-
   h1 {
     font-size: 2.2rem;
   }
@@ -93,24 +161,6 @@ const { pageTitle } = Astro.props;
     font-size: 1.2rem;
   }
 
-  /* 3. Navigation Bar Layout */
-  nav {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-  }
-
-  nav a:hover {
-    color: var(--link-color);
-  }
-
-  /* 4. Content Block Spacing */
   section,
   article {
     margin-bottom: 2.5rem;
@@ -130,11 +180,25 @@ const { pageTitle } = Astro.props;
     margin: 2rem 0;
   }
 
-  footer {
-    margin-top: 4rem;
-    font-size: 0.9rem;
-    color: #666666;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 1rem;
-  }
+  /* -------------------------------------------------- */
 </style>
+
+<!-- SCROLLING INERTIA -->
+<script>
+  import Lenis from "lenis";
+
+  //Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2, //Scroll inertia duration in seconds
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), //Custom easing curve
+    smoothWheel: true,
+  });
+
+  //Request Animation Frame loop to sync with the display refresh rate
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
