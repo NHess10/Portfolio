@@ -1,49 +1,174 @@
 ---
 // src/pages/about.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { Image } from "astro:assets";
+import test from "../assets/landscape-test.jpg";
+import test2 from "../assets/AboutMeGeneral.jpg";
+import test3 from "../assets/test3.jpeg";
+import test4 from "../assets/Headshot.jpg";
+import test5 from "../assets/AboutMeProjects.png";
+import test6 from "../assets/test6.jpg";
 ---
 
 <BaseLayout pageTitle="About - Noah Hess">
   <section class="introduction">
-    <h1 class="lead">
-      <span class="lead-title"
-        >I'm an
+    <section class="lead">
+      <h1 class="lead-title">
+        I'm an
         <span class="callout">engineer</span>,
         <span class="callout">designer</span>, and
-        <span class="callout">collaborator</span>
-      </span>
-      <span class="lead-subtitle"
-        >— ambitious about problem solving and driven by clean execution.</span
-      >
-    </h1>
+        <span class="callout">builder</span>.
+      </h1>
+      <div class="status-badge">
+        <span class="dot"></span> Available for Summer 2027 Internships
+      </div>
+    </section>
+    <Image src={test} class="lead-photo" alt="Noah Hess headshot" />
+  </section>
 
+  <section class="more-info">
     <div class="description">
-      I’m a Mechanical Engineering student at UBC with a passion for physical
-      product design, hands-on prototyping, and data-validated systems. I bring
-      a structured, detail-oriented approach to engineering challenges, working
-      closely with teams to build organized, reliable solutions.
+      <span>
+        I’m a Mechanical Engineering student at UBC with a passion for physical
+        product design and hands-on prototyping.
+      </span>
+      <span>
+        I bring an organized, detail-oriented approach to engineering problems,
+        collaborating with teams to deliver clean, reliable solutions.
+      </span>
     </div>
+    <a
+      class="resume-button"
+      href="/documents/resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer">resume</a
+    >
+  </section>
 
-    <div class="status-badge">
-      <span class="dot"></span> Available for May 2027 Internships
+  <section class="skills">
+    <div class="skills-title">
+      Core Skills<span class="dots"
+        ><span>.</span><span>.</span><span>.</span></span
+      >
+    </div>
+    <div class="skills-columns">
+      <div class="column">
+        <span class="column-title"
+          ><span class="number">01 /</span> Design & CAD</span
+        >
+        <span class="summary"
+          >Translating physical concepts into production-ready mechanical
+          assemblies built for real-world manufacturing.</span
+        >
+        <span class="list">
+          <span class="entry">
+            <span class="bullet"></span>SolidWorks & Fusion 360
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> DFM / DFA
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> GD&T & Tolerancing
+          </span>
+        </span>
+      </div>
+      <div class="column">
+        <span class="column-title"
+          ><span class="number">02 /</span> Simulation & Analysis</span
+        >
+        <span class="summary"
+          >Predicting stress, fluid flow, and thermal performance to back design
+          intuition with hard data.</span
+        >
+        <span class="list">
+          <span class="entry">
+            <span class="bullet"></span>ANSYS & SimScale (FEA & CFD)
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> Python (NumPy & Matplotlib)
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> Structural, Thermal & Fluid Modeling
+          </span>
+        </span>
+      </div>
+      <div class="column">
+        <span class="column-title"
+          ><span class="number">03 /</span> Protyping & Testing</span
+        >
+        <span class="summary"
+          >Turning digital concepts into functional physical prototypes through
+          rapid fabrication and empirical testing.</span
+        >
+        <span class="list">
+          <span class="entry">
+            <span class="bullet"></span>FDM 3D Printing & Rapid Fabrication
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> Test Rig Design & Sensor Integration
+          </span>
+          <span class="entry">
+            <span class="bullet"></span> Empirical Data Collection & Validation
+          </span>
+          <span class="entry"> </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="beyond-engineering">
+    <div class="beyond-title">Beyond Engineering</div>
+    <div class="beyond-subtitle">
+      I love making things, staying active, and exploring new hobbies. Hover
+      over any tile for more details.
+    </div>
+    <div class="photo-collage">
+      <div>
+        <Image src={test} class="photo" alt="Noah Hess headshot" />
+        <Image src={test4} class="photo" alt="Noah Hess headshot" />
+      </div>
+      <div>
+        <Image src={test2} class="photo" alt="Noah Hess headshot" />
+        <Image src={test6} class="photo" alt="Noah Hess headshot" />
+      </div>
+      <div>
+        <Image src={test3} class="photo" alt="Noah Hess headshot" />
+        <Image src={test5} class="photo" alt="Noah Hess headshot" />
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* -------------- IMPORTS & VARIABLES --------------- */
   @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
 
-  .callout {
-    font-family: "Prata", serif;
-    font-size: 1.05em;
-    color: #e56132;
-  }
+  /* -------------------------------------------------- */
 
+  /* ------------------ INTRODUCTION ------------------ */
+
+  .introduction {
+    margin: 5rem 0 15rem;
+    gap: 4rem;
+    display: inline-flex;
+  }
   .lead {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
   }
-
+  .lead-title {
+    font-weight: 300;
+    font-size: 4rem;
+  }
+  .callout {
+    font-family: "Prata", serif;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #e56132;
+  }
   .status-badge {
     padding-left: 1rem;
     display: inline-flex;
@@ -53,14 +178,195 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     text-transform: uppercase;
     letter-spacing: 0.05em;
     opacity: 0.7;
-    margin-bottom: 1.5rem;
-    z-index: 1;
   }
   .dot {
     width: 8px;
     height: 8px;
     background-color: #10b981;
     border-radius: 50%;
-    z-index: 1;
+  }
+  .lead-photo {
+    height: 30rem;
+    width: auto;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* ------------------- BIO + DOCS ------------------- */
+
+  .more-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  .resume-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 23rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: #e56132;
+    color: #ffffff;
+    font-family: "Prata", serif;
+    font-size: 2.5em;
+    font-weight: 800;
+    flex-shrink: 0;
+    transition: background-color ease 0.2s;
+  }
+  .resume-button:hover {
+    background-color: #933573;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* --------------------- SKILLS --------------------- */
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0;
+  }
+  .skills-title {
+    font-family: "Prata", serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #e56132;
+  }
+  .dots span {
+    opacity: 0;
+    animation-duration: 2.7s;
+    animation-iteration-count: infinite;
+    color: #933573;
+  }
+  .dots span:nth-child(1) {
+    animation-name: dot1;
+  }
+  .dots span:nth-child(2) {
+    animation-name: dot2;
+  }
+  .dots span:nth-child(3) {
+    animation-name: dot3;
+  }
+  @keyframes dot1 {
+    0% {
+      opacity: 0;
+    }
+    10%,
+    80% {
+      opacity: 0.8;
+    }
+    90%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes dot2 {
+    0%,
+    15% {
+      opacity: 0;
+    }
+    25%,
+    80% {
+      opacity: 0.8;
+    }
+    90%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes dot3 {
+    0%,
+    30% {
+      opacity: 0;
+    }
+    40%,
+    80% {
+      opacity: 0.8;
+    }
+    90%,
+    100% {
+      opacity: 0;
+    }
+  }
+  .skills-columns {
+    display: inline-flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 22vw;
+  }
+  .column-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+  .number {
+    font-family: "Prata", serif;
+    color: #e56132;
+    font-weight: 800;
+  }
+  .summary {
+    font-size: 1.15em;
+    margin: 0.5rem 0;
+    font-weight: 300;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+  .entry {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.15em;
+    font-weight: 500;
+  }
+  .bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #212529;
+    border-radius: 50%;
+    margin: 0 0.85rem;
+  }
+
+  /* -------------------------------------------------- */
+
+  /* --------------------- BEYOND --------------------- */
+
+  .beyond-engineering {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .beyond-title {
+    font-family: "Prata", serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #e56132;
+  }
+  .beyond-subtitle {
+    font-size: 1.75rem;
+    font-weight: 200;
+  }
+  .photo-collage {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100vw;
+  }
+  .photo {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 </style>
