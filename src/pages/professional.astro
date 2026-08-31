@@ -26,25 +26,115 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span class="column-title duration-title">YEAR</span>
         </div>
         <div class="entry">
-            <span class="position">Mechanical Engineering Co-op</span>
-            <span class="company">Delta-Q Technologies</span>
-            <span class="focus">Testing + Validation</span>
-            <span class="location">Vancouver, BC</span>
-            <span class="duration">2026</span>
+            <span class="preview">
+                <span class="position">Mechanical Engineering Co-op</span>
+                <span class="company">Delta-Q Technologies</span>
+                <span class="focus">Testing + Validation</span>
+                <span class="location">Vancouver, BC</span>
+                <span class="duration">2026</span>
+            </span>
+            <div class="expanded">
+                <span class="hidden">
+                    <span class="summary">I'm currently working here!</span>
+                </span>
+            </div>
         </div>
         <div class="entry">
-            <span class="position">Project Research Assistant Co-op</span>
-            <span class="company">Metro Vancouver</span>
-            <span class="focus">Project Management</span>
-            <span class="location">Vancouver, BC</span>
-            <span class="duration">2026</span>
+            <span class="preview">
+                <span class="position">Project Research Assistant Co-op</span>
+                <span class="company">Metro Vancouver</span>
+                <span class="focus">Project Management</span>
+                <span class="location">Vancouver, BC</span>
+                <span class="duration">2026</span>
+            </span>
+            <div class="expanded">
+                <span class="hidden">
+                    <span class="summary">
+                        As a Project Research Assistant in Metro Vancouver’s
+                        Water Services Department, I supported regional water
+                        infrastructure through data automation, system modeling,
+                        and process optimization. My work spanned automating
+                        data checks for water treatment sensors, auditing legacy
+                        engineering records, and refining lake discharge models.
+                        I also streamlined communication between project
+                        managers and operations by establishing clearer approval
+                        workflows for regional maintenance. Together, these
+                        initiatives reduced administrative delays, improved data
+                        reliability, and supported smoother daily operations
+                        across the system.
+                    </span>
+                    <span class="key-skills">
+                        <span class="skills-title">Technical Highlights:</span>
+                        <span class="skill">
+                            <span class="point"></span>Data Verification &
+                            Automation
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Hydrological Modeling &
+                            Analysis
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Engineering Drawing
+                            Audits
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Workflow Optimization
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Operations Coordination
+                        </span>
+                    </span>
+                </span>
+            </div>
         </div>
         <div class="entry">
-            <span class="position">Mechanical Design Engineer Intern</span>
-            <span class="company">Genist Systems</span>
-            <span class="focus">Design and Simulation</span>
-            <span class="location">Remote</span>
-            <span class="duration">2025</span>
+            <span class="preview">
+                <span class="position">Mechanical Design Engineer Intern</span>
+                <span class="company">Genist Systems</span>
+                <span class="focus">Design and Simulation</span>
+                <span class="location">Remote</span>
+                <span class="duration">2025</span>
+            </span>
+            <div class="expanded">
+                <span class="hidden">
+                    <span class="summary">
+                        As a Mechanical Design Engineer Intern at Genist
+                        Systems, I led the mechanical design and architectural
+                        layout for a high-speed VTOL emergency response drone. I
+                        conducted aerodynamic CFD and structural FEA simulations
+                        to evaluate flight efficiency and validate components
+                        under critical loading conditions. Additionally, I
+                        collaborated asynchronously across electrical, software,
+                        and manufacturing teams to manage version control and
+                        integrate complex subsystem constraints. My work
+                        established the core vehicle architecture while meeting
+                        all structural, aerodynamic, and manufacturability
+                        requirements.
+                    </span>
+                    <span class="key-skills">
+                        <span class="skills-title">Technical Highlights:</span>
+                        <span class="skill">
+                            <span class="point"></span>CAD & Architectural
+                            Layout
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Aerodynamic CFD
+                            Simulation
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Structural FEA & Load
+                            Analysis
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Subsystem Integration
+                        </span>
+                        <span class="skill">
+                            <span class="point"></span>Version Control &
+                            Documentation
+                        </span>
+                    </span>
+                </span>
+            </div>
         </div>
     </section>
 
@@ -150,14 +240,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         background-color: #10b981;
         border-radius: 50%;
     }
-    .entry {
-        display: flex;
-        align-items: center;
-        font-size: 1.3rem;
-        font-weight: 250;
-        height: 7rem;
-        border-top: 1px solid #e0e0e0;
-    }
+
     .experiences {
         border-bottom: 1px solid #e0e0e0;
         margin-bottom: 15rem;
@@ -195,9 +278,61 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
     .position {
         font-size: 1.5em;
-
         font-weight: 700;
         color: #227764;
+    }
+    .entry {
+        display: flex;
+        flex-direction: column;
+    }
+    .entry:hover .expanded {
+        grid-template-rows: 1fr;
+    }
+    .preview {
+        display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        font-weight: 250;
+        height: 7rem;
+        border-top: 1px solid #e0e0e0;
+    }
+    .expanded {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease;
+    }
+    .hidden {
+        display: flex;
+        overflow: hidden;
+        gap: 5rem;
+    }
+    .summary {
+        font-size: 1.2rem;
+        padding-bottom: 3rem;
+    }
+    .key-skills {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        gap: 0.4rem;
+    }
+    .skills-title {
+        font-weight: 700;
+        font-size: 1.1em;
+        color: #227764;
+    }
+    .skill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    .point {
+        display: flex;
+        flex-shrink: 0;
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        background-color: #227764;
     }
     .call-to-action {
         display: flex;
@@ -253,8 +388,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         width: 11rem;
         aspect-ratio: 5/4;
         border-radius: 9999px;
-        border: 13px solid #227764;
-        color: #227764;
+        background: #227764;
+        color: #ffffff;
         text-decoration: none;
         font-size: 1 rem;
         cursor: pointer;
