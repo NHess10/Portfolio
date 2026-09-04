@@ -3,12 +3,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import { Image } from "astro:assets";
+import basketball from "../assets/interests/basketball.jpg";
+import beaches from "../assets/interests/beaches.jpg";
+import food from "../assets/interests/food.jpg";
+import guitar from "../assets/interests/guitar.jpg";
+import nature from "../assets/interests/nature.jpg";
+import photography from "../assets/interests/photography.jpeg";
+import pool from "../assets/interests/pool.jpg";
+import spikeball from "../assets/interests/spikeball.jpg";
+import travel from "../assets/interests/travel.png";
 import test from "../assets/landscape-test.jpg";
-import test2 from "../assets/AboutMeGeneral.jpg";
-import test3 from "../assets/test3.jpeg";
-import test4 from "../assets/Headshot.jpg";
-import test5 from "../assets/AboutMeProjects.png";
-import test6 from "../assets/test6.jpg";
 ---
 
 <BaseLayout pageTitle="About - Noah Hess">
@@ -125,16 +129,19 @@ import test6 from "../assets/test6.jpg";
     </div>
     <div class="photo-collage">
       <div>
-        <Image src={test} class="photo" alt="Noah Hess headshot" />
-        <Image src={test4} class="photo" alt="Noah Hess headshot" />
+        <Image src={photography} class="photo" alt="description" />
+        <Image src={nature} class="photo" alt="description" />
+        <Image src={beaches} class="photo" alt="description" />
       </div>
       <div>
-        <Image src={test2} class="photo" alt="Noah Hess headshot" />
-        <Image src={test6} class="photo" alt="Noah Hess headshot" />
+        <Image src={basketball} class="photo" alt="description" />
+        <Image src={travel} class="photo" alt="description" />
+        <Image src={pool} class="photo" alt="description" />
       </div>
       <div>
-        <Image src={test3} class="photo" alt="Noah Hess headshot" />
-        <Image src={test5} class="photo" alt="Noah Hess headshot" />
+        <Image src={food} class="photo" alt="description" />
+        <Image src={guitar} class="photo" alt="description" />
+        <Image src={spikeball} class="photo" alt="description" />
       </div>
     </div>
   </section>
@@ -214,7 +221,7 @@ import test6 from "../assets/test6.jpg";
     width: 23rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background: #5E58D0;
+    background: #5e58d0;
     color: #ffffff;
     font-family: "Prata", serif;
     font-size: 2.5em;
