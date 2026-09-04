@@ -13,6 +13,7 @@ import pool from "../assets/interests/pool.jpg";
 import spikeball from "../assets/interests/spikeball.jpg";
 import travel from "../assets/interests/travel.png";
 import test from "../assets/landscape-test.jpg";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout pageTitle="About - Noah Hess">
@@ -44,7 +45,7 @@ import test from "../assets/landscape-test.jpg";
     </div>
     <a
       class="resume-button"
-      href="/documents/resume.pdf"
+      href={`${base}/documents/resume.pdf`}
       target="_blank"
       rel="noopener noreferrer">resume</a
     >

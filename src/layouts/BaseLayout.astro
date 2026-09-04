@@ -3,6 +3,13 @@
 // This is the frontmatter where component logic goes
 const { pageTitle } = Astro.props;
 const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const currentPath =
+  base && pathname.startsWith(base)
+    ? pathname.slice(base.length) || "/"
+    : pathname;
+const withBase = (path: string) =>
+  `${base}${path.startsWith("/") ? path : `/${path}`}`;
 ---
 
 <!-- GLOBAL PAGE LAYOUT -->
@@ -19,30 +26,30 @@ const pathname = Astro.url.pathname;
     <header class="site-header">
       <nav class="nav-menu">
         <a
-          href="/"
-          class:list={["nav-text nav-home", { active: pathname === "/" }]}
+          href={withBase("/")}
+          class:list={["nav-text nav-home", { active: currentPath === "/" }]}
         >
           home
         </a>
         <a
-          href="/about"
+          href={withBase("/about")}
           class:list={[
             "nav-text nav-about",
-            { active: pathname.startsWith("/about") },
+            { active: currentPath.startsWith("/about") },
           ]}>about</a
         >
         <a
-          href="/professional"
+          href={withBase("/professional")}
           class:list={[
             "nav-text nav-work",
-            { active: pathname.startsWith("/professional") },
+            { active: currentPath.startsWith("/professional") },
           ]}>work</a
         >
         <a
-          href="/projects"
+          href={withBase("/projects")}
           class:list={[
             "nav-text nav-projects",
-            { active: pathname.startsWith("/projects") },
+            { active: currentPath.startsWith("/projects") },
           ]}>projects</a
         >
       </nav>

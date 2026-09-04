@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import { Image } from "astro:assets";
 import Headshot from "../assets/Headshot.jpg";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout pageTitle="Noah Hess">
@@ -88,19 +89,19 @@ import Headshot from "../assets/Headshot.jpg";
     <div class="title">about me</div>
     <div class="about-cards">
       <div class="card card-general">
-        <a href="/about" class="redirect">
+        <a href={`${base}/about`} class="redirect">
           general
           <div class="underline"></div>
         </a>
       </div>
       <div class="card card-professional">
-        <a href="/professional" class="redirect">
+        <a href={`${base}/professional`} class="redirect">
           work
           <div class="underline"></div>
         </a>
       </div>
       <div class="card card-projects">
-        <a href="/projects" class="redirect">
+        <a href={`${base}/projects`} class="redirect">
           projects
           <div class="underline"></div>
         </a>

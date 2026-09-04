@@ -3,44 +3,37 @@
 A personal portfolio website featuring an interactive layout, custom typography, and responsive design.
 
 ## Tech Stack
+- Astro
 - HTML5
-- CSS3 (Flexbox & Custom Properties)
+- CSS3
 
 ## Setup & Local Development
-Simply open `index.html` in any modern browser to view the site locally.
-
-
-
-# Astro Starter Kit: Minimal
+Install dependencies and start the Astro dev server:
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deployment
 
-## 🚀 Project Structure
+This site deploys for free to GitHub Pages using GitHub Actions.
 
-Inside of your Astro project, you'll see the following folders and files:
+The workflow in `.github/workflows/deploy.yml` runs on every push to `main`:
+
+```sh
+npm run build
+```
+
+The deployed GitHub Pages URL is:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+https://nhess10.github.io/Portfolio/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+GitHub repository settings must use **Pages > Source: GitHub Actions**.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+## Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
