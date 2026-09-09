@@ -26,27 +26,27 @@ const withBase = (path: string) =>
     <header class="site-header">
       <nav class="nav-menu">
         <a
-          href={withBase("/")}
+          href="/"
           class:list={["nav-text nav-home", { active: currentPath === "/" }]}
         >
           home
         </a>
         <a
-          href={withBase("/about")}
+          href="/about"
           class:list={[
             "nav-text nav-about",
             { active: currentPath.startsWith("/about") },
           ]}>about</a
         >
         <a
-          href={withBase("/professional")}
+          href="/professional"
           class:list={[
             "nav-text nav-work",
             { active: currentPath.startsWith("/professional") },
           ]}>work</a
         >
         <a
-          href={withBase("/projects")}
+          href="/projects"
           class:list={[
             "nav-text nav-projects",
             { active: currentPath.startsWith("/projects") },
