@@ -16,8 +16,23 @@ import test from "../assets/landscape-test.jpg";
 ---
 
 <BaseLayout pageTitle="About - Noah Hess">
+  <div id="cursor-caption" class="cursor-caption">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+      <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+    </svg>
+    <span id="caption-text"></span>
+  </div>
+
   <section class="introduction">
-    <section class="lead">
+    <div class="lead">
       <h1 class="lead-title">
         I'm an
         <span class="callout">engineer</span>,
@@ -27,7 +42,7 @@ import test from "../assets/landscape-test.jpg";
       <div class="status-badge">
         <span class="dot"></span> Available for Summer 2027 Internships
       </div>
-    </section>
+    </div>
     <Image src={test} class="lead-photo" alt="Noah Hess headshot" />
   </section>
 
@@ -99,7 +114,7 @@ import test from "../assets/landscape-test.jpg";
       </div>
       <div class="column">
         <span class="column-title"
-          ><span class="number">03 /</span> Protyping & Testing</span
+          ><span class="number">03 /</span> Prototyping & Testing</span
         >
         <span class="summary"
           >Turning digital concepts into functional physical prototypes through
@@ -115,7 +130,6 @@ import test from "../assets/landscape-test.jpg";
           <span class="entry">
             <span class="bullet"></span> Empirical Data Collection & Validation
           </span>
-          <span class="entry"> </span>
         </span>
       </div>
     </div>
@@ -129,23 +143,93 @@ import test from "../assets/landscape-test.jpg";
     </div>
     <div class="photo-collage">
       <div>
-        <Image src={photography} class="photo" alt="description" />
-        <Image src={nature} class="photo" alt="description" />
-        <Image src={beaches} class="photo" alt="description" />
+        <Image
+          src={photography}
+          class="photo"
+          alt="Photography"
+          data-caption="CAPTURING MOMENTS WITH MY CAMERA"
+        />
+        <Image
+          src={nature}
+          class="photo"
+          alt="Nature"
+          data-caption="HIKING TRAILS AND MOUNTAINS"
+        />
+        <Image
+          src={beaches}
+          class="photo"
+          alt="Beaches"
+          data-caption="RELAXING ON THE BEACH"
+        />
       </div>
       <div>
-        <Image src={basketball} class="photo" alt="description" />
-        <Image src={travel} class="photo" alt="description" />
-        <Image src={pool} class="photo" alt="description" />
+        <Image
+          src={basketball}
+          class="photo"
+          alt="Basketball"
+          data-caption="COMPETING IN MY FAVOURITE SPORT"
+        />
+        <Image
+          src={travel}
+          class="photo"
+          alt="Travel"
+          data-caption="EXPLORING NEW CITIES AND PLACES"
+        />
+        <Image
+          src={pool}
+          class="photo"
+          alt="Pool"
+          data-caption="RACKING UP A GAME OF POOL"
+        />
       </div>
       <div>
-        <Image src={food} class="photo" alt="description" />
-        <Image src={guitar} class="photo" alt="description" />
-        <Image src={spikeball} class="photo" alt="description" />
+        <Image
+          src={food}
+          class="photo"
+          alt="Food"
+          data-caption="TRYING NEW AND EXCITING FOODS"
+        />
+        <Image
+          src={guitar}
+          class="photo"
+          alt="Guitar"
+          data-caption="LEARNING TO PLAY NEW SONGS"
+        />
+        <Image
+          src={spikeball}
+          class="photo"
+          alt="Spikeball"
+          data-caption="PLAYING SPIKEBALL WITH FRIENDS"
+        />
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const captionBox = document.getElementById("cursor-caption");
+  const captionText = document.getElementById("caption-text");
+  const targetImages = document.querySelectorAll("[data-caption]");
+
+  if (captionBox && captionText && targetImages.length > 0) {
+    targetImages.forEach((img) => {
+      img.addEventListener("mousemove", (e) => {
+        const mouseEvent = e as MouseEvent;
+        captionBox.style.left = `${mouseEvent.clientX}px`;
+        captionBox.style.top = `${mouseEvent.clientY}px`;
+
+        // Target the span element to preserve the SVG icon
+        captionText.textContent = (img as HTMLElement).dataset.caption || "";
+
+        captionBox.classList.add("is-visible");
+      });
+
+      img.addEventListener("mouseleave", () => {
+        captionBox.classList.remove("is-visible");
+      });
+    });
+  }
+</script>
 
 <style>
   /* -------------- IMPORTS & VARIABLES --------------- */
@@ -372,6 +456,53 @@ import test from "../assets/landscape-test.jpg";
     width: 100%;
     height: auto;
     display: block;
+    cursor: none;
+  }
+
+  .cursor-caption {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-24px, -50%) scale(0.95);
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease-out;
+    z-index: 9999;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Prata", serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #e56132;
+    padding: 6px 14px 6px 11px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .cursor-caption svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+  #caption-text {
+    display: inline-block;
+    transform: scaleY(0.92) translateY(1px);
+    transform-origin: center;
+  }
+
+  .cursor-caption.is-visible {
+    opacity: 1;
+    transform: translate(-24px, -50%) scale(1);
   }
 
   /* -------------------------------------------------- */
