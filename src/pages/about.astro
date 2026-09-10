@@ -33,18 +33,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   </div>
 
   <section class="introduction">
-    <div class="lead">
-      <h1 class="lead-title">
-        I'm an
-        <span class="callout">engineer</span>,
-        <span class="callout">designer</span>, and
-        <span class="callout">builder</span>.
-      </h1>
-      <div class="status-badge">
-        <span class="dot"></span> Available for Summer 2027 Internships
-      </div>
+    <h1 class="lead">
+      I'm an <br />
+      <span class="callout">engineer</span>, <br />
+      <span class="callout">designer</span>, and <br />
+      <span class="callout">builder</span>.
+    </h1>
+    <div class="status-badge">
+      <span class="dot"></span> Available for Summer 2027 Internships
     </div>
-    <Image src={test} class="lead-photo" alt="Noah Hess headshot" />
   </section>
 
   <section class="more-info">
@@ -241,25 +238,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   /* ------------------ INTRODUCTION ------------------ */
 
   .introduction {
-    margin: 5rem 0 15rem;
+    margin: 10rem 0 20rem;
     gap: 4rem;
-    display: inline-flex;
-  }
-  .lead {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 3rem;
+    gap: 10rem;
   }
-  .lead-title {
+  .introduction::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6rem;
+    width: 100%;
+    height: calc(100% - 6rem);
+    opacity: 0.7;
+    background-size: cover;
+    background-position: center 30%;
+    background-image: url("../assets/about/DSCF2959.JPG");
+    z-index: 0;
+  }
+  .lead {
     font-weight: 300;
     font-size: 4rem;
+    z-index: 1;
   }
   .callout {
     font-family: "Prata", serif;
     font-size: 1.05em;
     font-weight: 700;
     color: #e56132;
+    z-index: 1;
   }
   .status-badge {
     padding-left: 1rem;
@@ -270,16 +279,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     text-transform: uppercase;
     letter-spacing: 0.05em;
     opacity: 0.7;
+    z-index: 1;
   }
   .dot {
     width: 8px;
     height: 8px;
     background-color: #10b981;
     border-radius: 50%;
-  }
-  .lead-photo {
-    height: 30rem;
-    width: auto;
   }
 
   /* -------------------------------------------------- */
@@ -322,7 +328,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .skills {
     display: flex;
     flex-direction: column;
-    padding: 5rem 0;
+    padding: 8rem 0;
   }
   .skills-title {
     font-family: "Prata", serif;
