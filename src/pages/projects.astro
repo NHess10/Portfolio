@@ -4,12 +4,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Carousel from "../components/Carousel.astro";
 
 import { Image } from "astro:assets";
-import WingDesignCover from "../assets/WingDesignCover.png";
+import WingDesignCover from "../assets/projects/WingDesignCover.png";
+import financialTracker from "../assets/projects/financial-tracker.png";
+import portfolioWebsite from "../assets/projects/portfolio-website.png";
 ---
 
 <BaseLayout pageTitle="Projects - Noah Hess">
   <!-- <span class="title"> A Collection of my projects a</span><br /> -->
   <!-- <span class="subtitle"> This is to select my secondary colour!</span> -->
+
+  <section class="introduction">
+    <div class="title">engineering and design projects</div>
+    <div class="subtitle">work in progress!</div>
+  </section>
+
+  <section class="projects">
+    <div>
+      <div class="tile">
+        <Image
+          src={portfolioWebsite}
+          class="image"
+          alt="VTOL UAV Project CFD Simulation Results"
+        />
+        <div class="caption">New Portfolio Website</div>
+        <div class="summary">Building a new public portfolio from scratch.</div>
+      </div>
+    </div>
+    <div>
+      <div class="tile">
+        <Image
+          src={financialTracker}
+          class="image"
+          alt="VTOL UAV Project CFD Simulation Results"
+        />
+        <div class="caption">Excel Financial Tracker</div>
+        <div class="summary">Building an automated financial dashboard.</div>
+      </div>
+    </div>
+    <div>
+      <div class="tile">
+        <Image
+          src={WingDesignCover}
+          class="image"
+          alt="VTOL UAV Project CFD Simulation Results"
+        />
+        <div class="caption">Aileron Wing Design</div>
+        <div class="summary">Designing a UAV wing with a Frise aileron.</div>
+      </div>
+    </div>
+  </section>
 
   <p>
     A collection of my engineering projects, design work, and academic
@@ -241,6 +284,36 @@ import WingDesignCover from "../assets/WingDesignCover.png";
     font-weight: 800;
     color: #eeb72b;
   }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    gap: 2vw;
+  }
+  .tile {
+    background-color: #e2e2e2;
+    border-radius: 5%;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .image {
+    width: 100%;
+    height: auto;
+  }
+  .caption {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-left: 1rem;
+  }
+  .summary {
+    opacity: 0.4;
+    font-style: italic;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .project-card {
     flex-shrink: 0;
     width: 600px;
