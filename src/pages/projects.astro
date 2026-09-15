@@ -7,6 +7,8 @@ import { Image } from "astro:assets";
 import WingDesignCover from "../assets/projects/WingDesignCover.png";
 import financialTracker from "../assets/projects/financial-tracker.png";
 import portfolioWebsite from "../assets/projects/portfolio-website.png";
+import lawnmower from "../assets/projects/lawnmower-study.png";
+import firefightingVehicle from "../assets/projects/firefighting-vehicle.png";
 ---
 
 <BaseLayout pageTitle="Projects - Noah Hess">
@@ -18,9 +20,17 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
     <div class="subtitle">work in progress!</div>
   </section>
 
-  <section class="projects">
-    <div>
-      <div class="tile">
+  <section class="collection">
+    <div class="filters">
+      FILTER:
+      <div class="filter suggested active" data-filter="suggested">
+        Suggested
+      </div>
+      <div class="filter all" data-filter="all">All</div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile" data-suggested="true">
         <Image
           src={portfolioWebsite}
           class="image"
@@ -29,9 +39,18 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
         <div class="caption">New Portfolio Website</div>
         <div class="summary">Building a new public portfolio from scratch.</div>
       </div>
-    </div>
-    <div>
-      <div class="tile">
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Custom Home Improvements</div>
+        <div class="summary">Prototyping shear-loaded 3D-printed storage.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Halloween Costume</div>
+        <div class="summary">Fabricating 3D-printed Clash Royale props.</div>
+      </div>
+
+      <div class="tile" data-suggested="true">
         <Image
           src={financialTracker}
           class="image"
@@ -40,9 +59,8 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
         <div class="caption">Excel Financial Tracker</div>
         <div class="summary">Building an automated financial dashboard.</div>
       </div>
-    </div>
-    <div>
-      <div class="tile">
+
+      <div class="tile" data-suggested="true">
         <Image
           src={WingDesignCover}
           class="image"
@@ -50,6 +68,67 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
         />
         <div class="caption">Aileron Wing Design</div>
         <div class="summary">Designing a UAV wing with a Frise aileron.</div>
+      </div>
+
+      <div class="tile" data-suggested="true">
+        <Image
+          src={lawnmower}
+          class="image"
+          alt="Non-ICE Commercial Lawnmower"
+        />
+        <div class="caption">Alternate Power Case Study</div>
+        <div class="summary">Evaluating non-ICE commercial lawnmowers.</div>
+      </div>
+
+      <div class="tile" data-suggested="true">
+        <Image
+          src={firefightingVehicle}
+          class="image"
+          alt="Remote-Controlled Firefighting Vehicle"
+        />
+        <div class="caption">Firefighting Remote Vehicle</div>
+        <div class="summary">
+          Designing a remote-controlled firefighting vehicle.
+        </div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Remotely Operated RTV</div>
+        <div class="summary">Fabricating an all-terrain RC vehicle.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Maglev Device</div>
+        <div class="summary">Building a magnetic levitation device.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Rainwater Harvester Simulator</div>
+        <div class="summary">Optimizing a rainwater catchment system.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Automated Claw</div>
+        <div class="summary">Designing a sonar-triggered robotic claw.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Cardboard Chair</div>
+        <div class="summary">Engineering a high-capacity cardboard chair.</div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Adaptive Device Design</div>
+        <div class="summary">
+          Designing an adaptive mobility-assistive device.
+        </div>
+      </div>
+
+      <div class="tile" data-suggested="false">
+        <div class="caption">Cycle Lane Case Study</div>
+        <div class="summary">
+          Proposing a sustainable Vancouver cycle network.
+        </div>
       </div>
     </div>
   </section>
@@ -284,8 +363,44 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
     font-weight: 800;
     color: #eeb72b;
   }
-  .projects {
+  .collection {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .filters {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  }
+  .filter {
+    background-color: #eeb72b;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.5;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .filter.active {
+    opacity: 1;
+  }
+  .filter:hover {
+    transform: translateY(-2px);
+  }
+  .tiles {
     display: grid;
+    align-items: start;
     grid-template-columns: repeat(3, 1fr);
     width: 90vw;
     margin-left: 50%;
@@ -297,6 +412,9 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
     border-radius: 5%;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .tile.is-hidden {
+    display: none;
   }
   .image {
     width: 100%;
@@ -347,3 +465,40 @@ import portfolioWebsite from "../assets/projects/portfolio-website.png";
     height: auto;
   }
 </style>
+
+<script>
+  function setupFilters() {
+    const filterButtons =
+      document.querySelectorAll<HTMLElement>("[data-filter]");
+    const tiles = document.querySelectorAll<HTMLElement>(".tile");
+
+    function applyFilter(filterType: string) {
+      tiles.forEach((tile) => {
+        const isSuggested = tile.dataset.suggested === "true";
+
+        if (filterType === "all" || isSuggested) {
+          tile.classList.remove("is-hidden");
+        } else {
+          tile.classList.add("is-hidden");
+        }
+      });
+    }
+
+    applyFilter("suggested");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        if (!filter) return;
+
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        applyFilter(filter);
+      });
+    });
+  }
+
+  setupFilters();
+  document.addEventListener("astro:after-swap", setupFilters);
+</script>
