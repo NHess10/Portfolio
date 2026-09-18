@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+
+const { photo, caption, title, summary, description, suggested } = Astro.props;
+---
+
+<div class="tile forward" data-suggested={suggested}>
+  <div class="front active">
+    <Image src={photo} class="photo" alt={caption} />
+    <div class="title">{title}</div>
+    <div class="summary">{summary}</div>
+  </div>
+  <div class="back inactive">
+    <div class="title">{title}</div>
+    <div class="description">{description}</div>
+  </div>
+</div>
+
+<style>
+  .tile {
+    position: relative;
+    background-color: #e2e2e2;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .tile:hover {
+    cursor: pointer;
+  }
+  .front {
+  }
+  .photo {
+    width: 100%;
+    height: auto;
+  }
+  .title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-left: 1rem;
+  }
+  .summary {
+    opacity: 0.4;
+    font-style: italic;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  .back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .description {
+    width: 90%;
+  }
+  .active {
+    opacity: 1;
+  }
+  .inactive {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  const tiles = document.querySelectorAll(".tile");
+
+  tiles.forEach((tile) => {
+    const front = tile.querySelector(".front") as HTMLElement;
+    const back = tile.querySelector(".back") as HTMLElement;
+    tile.addEventListener("click", () => {
+      if (tile.classList.contains("forward")) {
+        front.classList.remove("active");
+        front.classList.add("inactive");
+        back.classList.remove("inactive");
+        back.classList.add("active");
+        tile.classList.remove("forward");
+      } else {
+        front.classList.remove("inactive");
+        front.classList.add("active");
+        back.classList.remove("active");
+        back.classList.add("inactive");
+        tile.classList.add("forward");
+      }
+    });
+  });
+</script>

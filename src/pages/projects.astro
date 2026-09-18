@@ -2,6 +2,7 @@
 // src/pages/projects.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Carousel from "../components/Carousel.astro";
+import Flipcard from "../components/Flipcard.astro";
 
 import { Image } from "astro:assets";
 import WingDesignCover from "../assets/projects/WingDesignCover.png";
@@ -30,106 +31,118 @@ import firefightingVehicle from "../assets/projects/firefighting-vehicle.png";
     </div>
 
     <div class="tiles">
-      <div class="tile" data-suggested="true">
-        <Image
-          src={portfolioWebsite}
-          class="image"
-          alt="VTOL UAV Project CFD Simulation Results"
-        />
-        <div class="caption">New Portfolio Website</div>
-        <div class="summary">Building a new public portfolio from scratch.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Custom Home Improvements</div>
-        <div class="summary">Prototyping shear-loaded 3D-printed storage.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Halloween Costume</div>
-        <div class="summary">Fabricating 3D-printed Clash Royale props.</div>
-      </div>
-
-      <div class="tile" data-suggested="true">
-        <Image
-          src={financialTracker}
-          class="image"
-          alt="VTOL UAV Project CFD Simulation Results"
-        />
-        <div class="caption">Excel Financial Tracker</div>
-        <div class="summary">Building an automated financial dashboard.</div>
-      </div>
-
-      <div class="tile" data-suggested="true">
-        <Image
-          src={WingDesignCover}
-          class="image"
-          alt="VTOL UAV Project CFD Simulation Results"
-        />
-        <div class="caption">Aileron Wing Design</div>
-        <div class="summary">Designing a UAV wing with a Frise aileron.</div>
-      </div>
-
-      <div class="tile" data-suggested="true">
-        <Image
-          src={lawnmower}
-          class="image"
-          alt="Non-ICE Commercial Lawnmower"
-        />
-        <div class="caption">Alternate Power Case Study</div>
-        <div class="summary">Evaluating non-ICE commercial lawnmowers.</div>
-      </div>
-
-      <div class="tile" data-suggested="true">
-        <Image
-          src={firefightingVehicle}
-          class="image"
-          alt="Remote-Controlled Firefighting Vehicle"
-        />
-        <div class="caption">Firefighting Remote Vehicle</div>
-        <div class="summary">
-          Designing a remote-controlled firefighting vehicle.
-        </div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Remotely Operated RTV</div>
-        <div class="summary">Fabricating an all-terrain RC vehicle.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Maglev Device</div>
-        <div class="summary">Building a magnetic levitation device.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Rainwater Harvester Simulator</div>
-        <div class="summary">Optimizing a rainwater catchment system.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Automated Claw</div>
-        <div class="summary">Designing a sonar-triggered robotic claw.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Cardboard Chair</div>
-        <div class="summary">Engineering a high-capacity cardboard chair.</div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Adaptive Device Design</div>
-        <div class="summary">
-          Designing an adaptive mobility-assistive device.
-        </div>
-      </div>
-
-      <div class="tile" data-suggested="false">
-        <div class="caption">Cycle Lane Case Study</div>
-        <div class="summary">
-          Proposing a sustainable Vancouver cycle network.
-        </div>
-      </div>
+      <Flipcard
+        photo={portfolioWebsite}
+        caption="Website Homepage Screenshot"
+        title="New Portfolio Website"
+        summary="Building a new public portfolio from scratch."
+        description="LONGER DESCRIPTION GOES HERE!!"
+        suggested="true"
+      />
+      <Flipcard
+        photo={portfolioWebsite}
+        caption=""
+        title="Custom Home Improvements"
+        summary="Prototyping shear-loaded 3D-printed storage."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={portfolioWebsite}
+        caption=""
+        title="Halloween Costume"
+        summary="Fabricating 3D-printed Clash Royale props."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={financialTracker}
+        caption=""
+        title="Excel Financial Tracker"
+        summary="Building an automated financial dashboard."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={WingDesignCover}
+        caption=""
+        title="Aileron Wing Design"
+        summary="Designing a UAV wing with a Frise aileron."
+        description=""
+        suggested="true"
+      />
+      <Flipcard
+        photo={lawnmower}
+        caption="Non-ICE Commercial Lawnmower"
+        title="Alternate Power Case Study"
+        summary="Evaluating non-ICE commercial lawnmowers."
+        description=""
+        suggested="true"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption="Remote-Controlled Firefighting Vehicle"
+        title="Firefighting Remote Vehicle"
+        summary="Designing a remote-controlled firefighting vehicle."
+        description=""
+        suggested="true"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Remotely Operated RTV"
+        summary="Fabricating an all-terrain RC vehicle."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Maglev Device"
+        summary="Building a magnetic levitation device."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Rainwater Harvester Simulator"
+        summary="Optimizing a rainwater catchment system."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Automated Claw"
+        summary="Designing a sonar-triggered robotic claw."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Cardboard Chair"
+        summary="Engineering a high-capacity cardboard chair."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Adaptive Device Design"
+        summary="Designing an adaptive mobility-assistive device."
+        description=""
+        suggested="false"
+      />
+      <Flipcard
+        photo={firefightingVehicle}
+        caption=""
+        title="Cycle Lane Case Study"
+        summary="Proposing a sustainable Vancouver cycle network."
+        description=""
+        suggested="false"
+      />
     </div>
   </section>
 
@@ -409,7 +422,7 @@ import firefightingVehicle from "../assets/projects/firefighting-vehicle.png";
   }
   .tile {
     background-color: #e2e2e2;
-    border-radius: 5%;
+    border-radius: 1vw;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
