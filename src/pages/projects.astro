@@ -1,10 +1,9 @@
 ---
 // src/pages/projects.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Carousel from "../components/Carousel.astro";
 import Flipcard from "../components/Flipcard.astro";
+import WaterfallGrid from "../components/WaterfallGrid.astro";
 
-import { Image } from "astro:assets";
 import WingDesignCover from "../assets/projects/WingDesignCover.png";
 import financialTracker from "../assets/projects/financial-tracker.png";
 import portfolioWebsite from "../assets/projects/portfolio-website.png";
@@ -16,508 +15,143 @@ import terrainVehicle from "../assets/projects/terrain-vehicle.jpg";
 import maglevDevice from "../assets/projects/maglev-device.jpg";
 import rainwaterHarvester from "../assets/projects/rainwater-harvester.png";
 import automatedClaw from "../assets/projects/automated-claw.jpg";
+import cardboardChair from "../assets/projects/cardboard-chair.png";
+import adaptiveDevice from "../assets/projects/adaptive-device.png";
+import cycleLane from "../assets/projects/cycle-lane.png";
 ---
 
 <BaseLayout pageTitle="Projects - Noah Hess">
-  <!-- <span class="title"> A Collection of my projects a</span><br /> -->
-  <!-- <span class="subtitle"> This is to select my secondary colour!</span> -->
+    <section class="introduction">
+        <div class="title">Engineering and Design Projects</div>
+    </section>
 
-  <section class="introduction">
-    <div class="title">engineering and design projects</div>
-    <div class="subtitle">work in progress!</div>
-  </section>
-
-  <section class="collection">
-    <div class="filters">
-      FILTER:
-      <div class="filter suggested active" data-filter="suggested">
-        Suggested
-      </div>
-      <div class="filter all" data-filter="all">All</div>
-    </div>
-
-    <div class="tiles">
-      <Flipcard
-        photo={portfolioWebsite}
-        caption="Website Homepage Screenshot"
-        title="New Portfolio Website"
-        summary="Building a new public portfolio from scratch."
-        description="I built this portfolio from scratch to escape the design limitations and monthly fees of pre-built site templates. By crafting the site directly, I had complete freedom to develop custom card layouts, distinct color themes, and responsive components. It’s a fully personalized, zero-cost showcase that gives me total control over every visual and technical detail."
-        suggested="true"
-      />
-      <Flipcard
-        photo={wallMounts}
-        caption=""
-        title="Custom Home Improvements"
-        summary="Prototyping shear-loaded 3D-printed storage."
-        description="To optimize an unused recessed corner in my room, I designed and 3D-printed a modular shelving unit and wall catch-all using damage-free Command Strip mounts. I engineered the bracket geometry so the load acts strictly in shear below the adhesive, allowing the base to press against the wall and resist rotation. After refining the bracket geometry to conceal the mounting strips and resolving print overhang angles, the final assembly seamlessly holds over 10 kg."
-        suggested="false"
-      />
-      <Flipcard
-        photo={halloweenCostume}
-        caption=""
-        title="Halloween Costume"
-        summary="Fabricating 3D-printed Clash Royale props."
-        description="To bring the Clash Royale King to life, I engineered and 3D-printed a complete set of costume props from scratch. Using Fusion 360, I translated the game's circular crown, buckle, and cape jewels into printable CAD models, integrating hidden foam lining for comfort and functional assembly features. After printing, I hand-painted each element to match the stylized artwork, delivering a comfortable, high-accuracy build that stood out."
-        suggested="false"
-      />
-      <Flipcard
-        photo={financialTracker}
-        caption=""
-        title="Excel Financial Tracker"
-        summary="Building an automated financial dashboard."
-        description="To gain greater control over my personal finances, I developed a custom multi-sheet tracking system from scratch. Monthly logs use automated pivot tables and category breakdowns to highlight spending patterns, feeding directly into a cumulative summary dashboard. The workbook also includes a dedicated investment tracker that monitors live portfolio values, total returns, and TFSA contribution limits for long-term planning."
-        suggested="false"
-      />
-      <Flipcard
-        photo={WingDesignCover}
-        caption=""
-        title="Aileron Wing Design"
-        summary="Designing a UAV wing with a Frise aileron."
-        description="Over a three-day challenge, I self-taught aerodynamic fundamentals and CFD simulation to engineer a VTOL drone wing equipped with a servo-actuated Frise aileron. I modeled a NACA 4412 airfoil in Fusion 360 and analyzed its performance across multiple deflection angles using SimScale. The resulting design documentation and simulation analysis directly secured my first mechanical engineering internship at Genist Systems."
-        suggested="true"
-      />
-      <Flipcard
-        photo={lawnmower}
-        caption="Non-ICE Commercial Lawnmower"
-        title="Alternate Power Case Study"
-        summary="Evaluating non-ICE commercial lawnmowers."
-        description="To evaluate green alternatives to gas-powered commercial lawnmowers in Metro Vancouver, my team conducted a feasibility study on battery and hydrogen systems. I gathered stakeholder feedback to construct quantitative satisfaction curves and scoring equations for each option. Our final deliverable combined market research, NPV modeling, and project documentation to validate a viable zero-emission solution."
-        suggested="true"
-      />
-      <Flipcard
-        photo={firefightingVehicle}
-        caption="Remote-Controlled Firefighting Vehicle"
-        title="Firefighting Remote Vehicle"
-        summary="Designing a remote-controlled firefighting vehicle."
-        description="To combat wildland canopy fires in difficult terrain, my team prototyped an RC firefighting vehicle equipped with a compressed-air water cannon. We designed an efficient transmission system tailored for variable motor speeds and a heavy liquid payload. The multidisciplinary build balanced fluid dynamics, precision targeting, and chassis stability while meeting strict safety and speed specifications."
-        suggested="true"
-      />
-      <Flipcard
-        photo={terrainVehicle}
-        caption=""
-        title="Remotely Operated RTV"
-        summary="Fabricating an all-terrain RC vehicle."
-        description="To navigate challenging terrain with drive motors locked at full power, my team engineered an RC vehicle capable of mechanical speed regulation, braking, and steering. Guided by a formal design framework under strict weight and cost constraints, our final build featured a custom three-speed transmission driven by a servo-controlled gear selector to regulate speed without throttle adjustments."
-        suggested="false"
-      />
-      <Flipcard
-        photo={maglevDevice}
-        caption=""
-        title="Maglev Device"
-        summary="Building a magnetic levitation device."
-        description="I machined and assembled a functional magnetic levitation system to master fundamental engineering fabrication techniques. Working from detailed engineering drawings, I manufactured the mechanical components and soldered the circuit board responsible for controlling levitation. The project provided hands-on experience in translating technical documentation into an operational physical prototype."
-        suggested="false"
-      />
-      <Flipcard
-        photo={rainwaterHarvester}
-        caption=""
-        title="Rainwater Harvester Simulator"
-        summary="Optimizing a rainwater catchment system."
-        description="I led the development of a spreadsheet simulation to identify the optimal configuration for a residential rainwater catchment system. Using a full year of rainfall data, our model weighed filtration choices, treatment methods, and costs against weighted criteria like flow rate and system overhead. Our final design presentation achieved the highest overall consumer satisfaction score in the studio."
-        suggested="false"
-      />
-      <Flipcard
-        photo={automatedClaw}
-        caption=""
-        title="Automated Claw"
-        summary="Designing a sonar-triggered robotic claw."
-        description="I co-led the design and physical fabrication of an automated aluminum claw engineered to lift and transport objects. Using hand tools and riveting techniques, we shaped custom sheet-metal arms controlled by an Arduino and servo motor, incorporating an ultrasonic sensor for automated grip actuation upon object detection."
-        suggested="false"
-      />
-      <Flipcard
-        photo={firefightingVehicle}
-        caption=""
-        title="Cardboard Chair"
-        summary="Engineering a high-capacity cardboard chair."
-        description=""
-        suggested="false"
-      />
-      <Flipcard
-        photo={firefightingVehicle}
-        caption=""
-        title="Adaptive Device Design"
-        summary="Designing an adaptive mobility-assistive device."
-        description=""
-        suggested="false"
-      />
-      <Flipcard
-        photo={firefightingVehicle}
-        caption=""
-        title="Cycle Lane Case Study"
-        summary="Proposing a sustainable Vancouver cycle network."
-        description=""
-        suggested="false"
-      />
-    </div>
-  </section>
-
-  <p>
-    A collection of my engineering projects, design work, and academic
-    laboratory documentation. Each project represents a hands-on application of
-    technical theory to physical or digital solutions. Please click into any of
-    them to learn more about the project!
-  </p>
-
-  <Carousel>
-    <div class="project-card active">
-      <article>
-        <h2>Excel Financial Tracker</h2>
-        <ul>
-          <li>
-            Built an automated financial tracking workbook and summary dashboard
-            utilizing pivot tables and consistent sheet-naming conventions to
-            consolidate monthly, cumulative, and year-to-date metrics while
-            visualizing spending patterns.
-          </li>
-          <li>
-            Developed a portfolio management tool with variance-driven
-            rebalancing logic to optimize ETF capital allocation based on
-            real-time valuations and targets, while integrating visual
-            performance graphs and tracking TFSA contribution room.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <Image
-        src={WingDesignCover}
-        class="project-image"
-        alt="VTOL UAV Project CFD Simulation Results"
-      />
-      <article>
-        <h2>VTOL UAV Aileron Wing Design</h2>
-        <ul>
-          <li>
-            Designed and modeled VTOL UAV wing featuring a Frise aileron and
-            servo-actuated mechanism in Fusion 360 using a NACA 4412 airfoil
-            based on performance requirements for speed, altitude, and payload.
-          </li>
-          <li>
-            Performed CFD simulations in SimScale to evaluate lift, pressure
-            distribution, and control-surface effects at various aileron
-            deflections, verifying aerodynamic performance under specified
-            operating conditions.
-          </li>
-          <li>
-            Documented design assumptions, simulation results, and proposed
-            improvements for further optimization.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Alternate Power Case Study</h2>
-        <ul>
-          <li>
-            Led stakeholder research and consultations with commercial lawn-care
-            providers to identify user needs, validate engineering requirements,
-            and define target specifications for non-ICE commercial lawn-mowing
-            solutions.
-          </li>
-          <li>
-            Developed quantitative satisfaction curves based on stakeholder
-            input and external research, integrating them into a custom scoring
-            calculator and value equation to support evidence-based evaluation
-            of alternative power sources.
-          </li>
-          <li>
-            Produced Gantt charts, risk registers, an NPV analysis, and an
-            expression of interest for weekly progress reviews.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Firefighting Remotely-Operated Rough Terrain Vehicle</h2>
-        <ul>
-          <li>
-            Designed a remote-controlled vehicle with a servo-actuated
-            transmission and steering mechanism performing under simulated motor
-            failure using PLA/metal hybrid construction for improved
-            sustainability and performance.
-          </li>
-          <li>
-            Coordinated project timeline and deliverables using a Gantt chart to
-            meet design requirements and testing milestones.
-          </li>
-          <li>
-            Engineered a compressed-air water cannon system using pressurized
-            air/water vessels, servo-controlled valves, and a two-axis targeting
-            mechanism capable of extinguishing elevated fires.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Maglev Device</h2>
-        <ul>
-          <li>
-            Machined aluminum components to specifications using a lathe,
-            milling machine, and precision hand tools.
-          </li>
-          <li>
-            Soldered and assembled a PCB with resistors, capacitors, and ICs
-            based on a given circuit schematic.
-          </li>
-          <li>
-            Assembled levitation device while learning core engineering and
-            fabrication skills.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Rainwater Harvester Simulator</h2>
-        <ul>
-          <li>
-            Led spreadsheet model development to simulate rainwater catchment
-            performance using variable system parameters.
-          </li>
-          <li>
-            Optimized filter, treatment, and storage options to maximize
-            consumer satisfaction based on weighted criteria.
-          </li>
-          <li>
-            Presented final system configuration, achieving the highest
-            satisfaction score among all studio teams.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Automated Claw</h2>
-        <ul>
-          <li>
-            Co-designed and built an automated claw device to grab, hold, and
-            move objects using sonar-triggered actuation.
-          </li>
-          <li>
-            Reworked and assembled aluminum sheet metal using aviation snips,
-            seamers, and riveting tools.
-          </li>
-          <li>
-            Programmed Arduino UNO and servo motor to respond to object
-            detection via ultrasonic sensor.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Cardboard Chair</h2>
-        <ul>
-          <li>
-            Designed and prototyped a child-sized cardboard chair from a single
-            4’×4’ sheet for displaced children aged 5–8.
-          </li>
-          <li>
-            Developed the final throne-style design with integrated play
-            features like a chessboard seat and tic-tac-toe support.
-          </li>
-          <li>
-            Built and tested the chair to support up to 400 lbs, ensuring
-            durability through repeated assembly and active use.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Adaptive Device Design</h2>
-        <ul>
-          <li>
-            Collaborated on the design of a pet grooming aid for a user with
-            limited arm and hand mobility.
-          </li>
-          <li>
-            Evaluated multiple concepts using CAD and a weighted decision matrix
-            based on setup time, comfort, and usability.
-          </li>
-          <li>
-            Delivered a technical memorandum detailing stakeholder needs, design
-            criteria, and final recommendation.
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="project-card inactive">
-      <article>
-        <h2>Cycle Lane Case Study</h2>
-        <ul>
-          <li>
-            Assessed four major Vancouver corridors to recommend a protected
-            bike lane improving active transportation access.
-          </li>
-          <li>
-            Conducted multi-criteria analysis using safety, environmental, and
-            financial metrics to justify the optimal route.
-          </li>
-          <li>
-            Aligned proposal with Vancouver’s Transportation 2040 and Climate
-            Emergency Action Plan to reduce emissions.
-          </li>
-        </ul>
-      </article>
-    </div>
-  </Carousel>
+    <WaterfallGrid>
+        <Flipcard
+            photo={portfolioWebsite}
+            caption="Website Homepage Screenshot"
+            title="New Portfolio Website"
+            summary="Building a new public portfolio from scratch."
+            description="I built this portfolio from scratch to escape the design limitations and monthly fees of pre-built site templates. By crafting the site directly, I had complete freedom to develop custom card layouts, distinct color themes, and responsive components. It’s a fully personalized, zero-cost showcase that gives me total control over every visual and technical detail."
+            suggested="true"
+        />
+        <Flipcard
+            photo={wallMounts}
+            caption=""
+            title="Custom Home Improvements"
+            summary="Prototyping shear-loaded 3D-printed storage."
+            description="To optimize an unused recessed corner in my room, I designed and 3D-printed a modular shelving unit and wall catch-all using damage-free Command Strip mounts. I engineered the bracket geometry so the load acts strictly in shear below the adhesive, allowing the base to press against the wall and resist rotation. After refining the bracket geometry to conceal the mounting strips and resolving print overhang angles, the final assembly seamlessly holds over 10 kg."
+            suggested="false"
+        />
+        <Flipcard
+            photo={halloweenCostume}
+            caption=""
+            title="Halloween Costume"
+            summary="Fabricating 3D-printed Clash Royale props."
+            description="To bring the Clash Royale King to life, I engineered and 3D-printed a complete set of costume props from scratch. Using Fusion 360, I translated the game's circular crown, buckle, and cape jewels into printable CAD models, integrating hidden foam lining for comfort and functional assembly features. After printing, I hand-painted each element to match the stylized artwork, delivering a comfortable, high-accuracy build that stood out."
+            suggested="false"
+        />
+        <Flipcard
+            photo={financialTracker}
+            caption=""
+            title="Excel Financial Tracker"
+            summary="Building an automated financial dashboard."
+            description="To gain greater control over my personal finances, I developed a custom multi-sheet tracking system from scratch. Monthly logs use automated pivot tables and category breakdowns to highlight spending patterns, feeding directly into a cumulative summary dashboard. The workbook also includes a dedicated investment tracker that monitors live portfolio values, total returns, and TFSA contribution limits for long-term planning."
+            suggested="true"
+        />
+        <Flipcard
+            photo={WingDesignCover}
+            caption=""
+            title="Aileron Wing Design"
+            summary="Designing a UAV wing with a Frise aileron."
+            description="Over a three-day challenge, I self-taught aerodynamic fundamentals and CFD simulation to engineer a VTOL drone wing equipped with a servo-actuated Frise aileron. I modeled a NACA 4412 airfoil in Fusion 360 and analyzed its performance across multiple deflection angles using SimScale. The resulting design documentation and simulation analysis directly secured my first mechanical engineering internship at Genist Systems."
+            suggested="true"
+        />
+        <Flipcard
+            photo={lawnmower}
+            caption="Non-ICE Commercial Lawnmower"
+            title="Alternate Power Case Study"
+            summary="Evaluating non-ICE commercial lawnmowers."
+            description="To evaluate green alternatives to gas-powered commercial lawnmowers in Metro Vancouver, my team conducted a feasibility study on battery and hydrogen systems. I gathered stakeholder feedback to construct quantitative satisfaction curves and scoring equations for each option. Our final deliverable combined market research, NPV modeling, and project documentation to validate a viable zero-emission solution."
+            suggested="true"
+        />
+        <Flipcard
+            photo={firefightingVehicle}
+            caption="Remote-Controlled Firefighting Vehicle"
+            title="Firefighting Remote Vehicle"
+            summary="Designing a remote-controlled firefighting vehicle."
+            description="To combat wildland canopy fires in difficult terrain, my team prototyped an RC firefighting vehicle equipped with a compressed-air water cannon. We designed an efficient transmission system tailored for variable motor speeds and a heavy liquid payload. The multidisciplinary build balanced fluid dynamics, precision targeting, and chassis stability while meeting strict safety and speed specifications."
+            suggested="true"
+        />
+        <Flipcard
+            photo={terrainVehicle}
+            caption=""
+            title="Remotely Operated RTV"
+            summary="Fabricating an all-terrain RC vehicle."
+            description="To navigate challenging terrain with drive motors locked at full power, my team engineered an RC vehicle capable of mechanical speed regulation, braking, and steering. Guided by a formal design framework under strict weight and cost constraints, our final build featured a custom three-speed transmission driven by a servo-controlled gear selector to regulate speed without throttle adjustments."
+            suggested="false"
+        />
+        <Flipcard
+            photo={maglevDevice}
+            caption=""
+            title="Maglev Device"
+            summary="Building a magnetic levitation device."
+            description="I machined and assembled a functional magnetic levitation system to master fundamental engineering fabrication techniques. Working from detailed engineering drawings, I manufactured the mechanical components and soldered the circuit board responsible for controlling levitation. The project provided hands-on experience in translating technical documentation into an operational physical prototype."
+            suggested="false"
+        />
+        <Flipcard
+            photo={rainwaterHarvester}
+            caption=""
+            title="Rainwater Harvester Simulator"
+            summary="Optimizing a rainwater catchment system."
+            description="I led the development of a spreadsheet simulation to identify the optimal configuration for a residential rainwater catchment system. Using a full year of rainfall data, our model weighed filtration choices, treatment methods, and costs against weighted criteria like flow rate and system overhead. Our final design presentation achieved the highest overall consumer satisfaction score in the studio."
+            suggested="true"
+        />
+        <Flipcard
+            photo={automatedClaw}
+            caption=""
+            title="Automated Claw"
+            summary="Designing a sonar-triggered robotic claw."
+            description="I co-led the design and physical fabrication of an automated aluminum claw engineered to lift and transport objects. Using hand tools and riveting techniques, we shaped custom sheet-metal arms controlled by an Arduino and servo motor, incorporating an ultrasonic sensor for automated grip actuation upon object detection."
+            suggested="false"
+        />
+        <Flipcard
+            photo={cardboardChair}
+            caption=""
+            title="Cardboard Chair"
+            summary="Engineering a high-capacity cardboard chair."
+            description="I designed the core prototype for a team project creating an interactive, flat-pack cardboard chair for children fleeing displacement. Constructed strictly from a 4' x 4' sheet of corrugated cardboard, the throne-style chair integrated custom games made from spare material to bring comfort and play to young users. Engineered for both high transit efficiency and structural resilience, the final design held 400 pounds during load testing."
+            suggested="false"
+        />
+        <Flipcard
+            photo={adaptiveDevice}
+            caption=""
+            title="Adaptive Device Design"
+            summary="Designing an adaptive mobility-assistive device."
+            description="To assist a client with limited upper-limb mobility, my team designed a custom adaptive device that enables independent pet grooming. We analyzed user movement constraints to create an intuitive, ergonomic tool that minimizes required grip strength while maximizing user autonomy. Our team detailed the engineering requirements, prototyping iterations, and design decisions in a formal technical memorandum."
+            suggested="false"
+        />
+        <Flipcard
+            photo={cycleLane}
+            caption=""
+            title="Cycle Lane Case Study"
+            summary="Proposing a sustainable Vancouver cycle network."
+            description="To support non-automotive transit in Vancouver, my group developed a protected cycle lane proposal for a high-volume municipal corridor. We analyzed urban traffic flow and network connectivity to defend our street selection, proving its potential to drive cycling adoption. The final case study aligned our design framework directly with the zero-emission transit goals outlined in Vancouver's Transportation 2040 plan."
+            suggested="false"
+        />
+    </WaterfallGrid>
 </BaseLayout>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
-  .title {
-    font-size: 4rem;
-    font-family: "Gloria Hallelujah", cursive;
-    font-style: italic;
-    letter-spacing: -0.05em;
-    color: #343a3f;
-  }
-  .subtitle {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #eeb72b;
-  }
-  .collection {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-  .filters {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-  }
-  .filter {
-    background-color: #eeb72b;
-    color: #ffffff;
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-    opacity: 0.5;
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease;
-  }
-  .filter.active {
-    opacity: 1;
-  }
-  .filter:hover {
-    transform: translateY(-2px);
-  }
-  .tiles {
-    display: grid;
-    align-items: start;
-    grid-template-columns: repeat(3, 1fr);
-    width: 90vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    gap: 2vw;
-  }
-  .tile {
-    background-color: #e2e2e2;
-    border-radius: 1vw;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  }
-  .tile.is-hidden {
-    display: none;
-  }
-  .image {
-    width: 100%;
-    height: auto;
-  }
-  .caption {
-    font-size: 1.25rem;
-    font-weight: 400;
-    margin-left: 1rem;
-  }
-  .summary {
-    opacity: 0.4;
-    font-style: italic;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-card {
-    flex-shrink: 0;
-    width: 600px;
-    box-sizing: border-box;
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid #e0e0e0;
-    transition:
-      transform 0.4s ease,
-      opacity 0.4s ease,
-      filter 0.4s ease;
-  }
-
-  .project-card.active {
-    transform: scale(1);
-    opacity: 1;
-    filter: blur(0px);
-    overflow: hidden;
-  }
-
-  .project-card.inactive {
-    transform: scale(0.95);
-    opacity: 0.5;
-    filter: blur(2px);
-  }
-
-  .project-image {
-    margin: -2rem;
-    width: 600px;
-    height: auto;
-  }
-</style>
-
-<script>
-  function setupFilters() {
-    const filterButtons =
-      document.querySelectorAll<HTMLElement>("[data-filter]");
-    const tiles = document.querySelectorAll<HTMLElement>(".tile");
-
-    function applyFilter(filterType: string) {
-      tiles.forEach((tile) => {
-        const isSuggested = tile.dataset.suggested === "true";
-
-        if (filterType === "all" || isSuggested) {
-          tile.classList.remove("is-hidden");
-        } else {
-          tile.classList.add("is-hidden");
-        }
-      });
+    .introduction {
+        padding: 4rem 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
-
-    applyFilter("suggested");
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-        if (!filter) return;
-
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        applyFilter(filter);
-      });
-    });
-  }
-
-  setupFilters();
-  document.addEventListener("astro:after-swap", setupFilters);
-</script>
+    .title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #eeb72b;
+    }
+</style>
