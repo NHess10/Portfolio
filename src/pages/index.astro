@@ -9,6 +9,7 @@ import Headshot from "../assets/Headshot.jpg";
 <BaseLayout pageTitle="Noah Hess">
   <!-- Hero Section: Big Typography & Punchy Status -->
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
     <h1 class="hero-title">
       <span class="hero-name">noah hess</span>
       <span class="hero-subtitle">student</span>
@@ -112,28 +113,44 @@ import Headshot from "../assets/Headshot.jpg";
     @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&display=swap");
     .hero {
       padding: 6rem 0 9rem;
+      position: relative;
     }
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 50vw);
+      width: 100vw;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-bg::before,
+    .hero-bg::after {
       content: "";
       position: absolute;
       left: 0;
-      top: 6rem;
+      top: 0;
       width: 100%;
-      height: 80%;
+      height: 100%;
       opacity: 0.4;
       background-size: cover;
       background-position: center;
       background-image: url("../assets/HeroBackground.png");
-      background-repeat: repeat-x;
       animation: scrollBackground 50s linear infinite;
       z-index: 0;
     }
+    .hero-bg::before {
+      left: 0;
+    }
+    .hero-bg::after {
+      left: 100%;
+    }
     @keyframes scrollBackground {
       0% {
-        background-position-x: 0;
+        transform: translateX(0);
       }
       100% {
-        background-position-x: -2000px;
+        transform: translateX(-100%);
       }
     }
 

@@ -66,8 +66,12 @@ const { photo, caption, title, summary, description, suggested } = Astro.props;
   tiles.forEach((tile) => {
     const front = tile.querySelector(".front") as HTMLElement;
     const back = tile.querySelector(".back") as HTMLElement;
+    let isAnimating = false;
 
     tile.addEventListener("click", () => {
+      if (isAnimating) return;
+      isAnimating = true;
+
       async function flipTile() {
         const shrink = tile.animate(
           [
@@ -82,7 +86,7 @@ const { photo, caption, title, summary, description, suggested } = Astro.props;
         front.classList.toggle("inactive");
         back.classList.toggle("inactive");
 
-        tile.animate(
+        const expand = tile.animate(
           [
             { transform: "perspective(1800px) rotateY(-90deg)" },
             { transform: "perspective(1800px) rotateY(0deg)" },
@@ -93,6 +97,9 @@ const { photo, caption, title, summary, description, suggested } = Astro.props;
             fill: "forwards",
           },
         );
+
+        await expand.finished;
+        isAnimating = false;
       }
 
       flipTile();
