@@ -22,7 +22,13 @@ import cycleLane from "../assets/projects/cycle-lane.png";
 
 <BaseLayout pageTitle="Projects - Noah Hess">
     <section class="introduction">
-        <div class="title">Engineering and Design Projects</div>
+        <div class="title">projects</div>
+
+        <div class="pre-title">
+            <div class="callout">engineering</div> and <div class="callout">
+                design
+            </div>
+        </div>
     </section>
 
     <WaterfallGrid>
@@ -142,16 +148,34 @@ import cycleLane from "../assets/projects/cycle-lane.png";
 </BaseLayout>
 
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&display=swap");
+
     .introduction {
-        padding: 4rem 0 0;
+        padding: 8rem 0 4rem;
+        width: 100;
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 0.5rem;
+        font-size: 2rem;
+        font-weight: 100;
+    }
+    .pre-title {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
         gap: 2rem;
     }
-    .title {
+    .callout {
         font-size: 3rem;
-        font-weight: 800;
+        font-weight: 150;
+    }
+    .title {
+        font-size: 4rem;
+        font-family: "DynaPuff", cursive;
+        font-weight: 700;
         color: #eeb72b;
+        letter-spacing: -0.03em;
+        text-transform: lowercase;
     }
 </style>

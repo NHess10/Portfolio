@@ -31,27 +31,29 @@ const withBase = (path: string) =>
         >
           home
         </a>
-        <a
-          href="/about"
-          class:list={[
-            "nav-text nav-about",
-            { active: currentPath.startsWith("/about") },
-          ]}>about</a
-        >
-        <a
-          href="/professional"
-          class:list={[
-            "nav-text nav-work",
-            { active: currentPath.startsWith("/professional") },
-          ]}>work</a
-        >
-        <a
-          href="/projects"
-          class:list={[
-            "nav-text nav-projects",
-            { active: currentPath.startsWith("/projects") },
-          ]}>projects</a
-        >
+        <div class="secondary">
+          <a
+            href="/about"
+            class:list={[
+              "nav-text nav-about",
+              { active: currentPath.startsWith("/about") },
+            ]}>about</a
+          >
+          <a
+            href="/professional"
+            class:list={[
+              "nav-text nav-work",
+              { active: currentPath.startsWith("/professional") },
+            ]}>work</a
+          >
+          <a
+            href="/projects"
+            class:list={[
+              "nav-text nav-projects",
+              { active: currentPath.startsWith("/projects") },
+            ]}>projects</a
+          >
+        </div>
       </nav>
     </header>
 
@@ -74,7 +76,7 @@ const withBase = (path: string) =>
   @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
 
   :root {
     --bg-color: #f8f9fa;
@@ -97,10 +99,15 @@ const withBase = (path: string) =>
     align-items: center;
   }
 
-  .nav-menu {
+  .nav-menu, .secondary {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .nav-text {
@@ -147,22 +154,20 @@ const withBase = (path: string) =>
 
   .nav-work:hover,
   .nav-work.active {
-    color: #1F7A65;
+    color: #1f7a65;
   }
 
   .nav-projects {
     font-size: 1.7vw;
-    font-family: "Gloria Hallelujah", cursive;
-    font-style: italic;
-    font-weight: 500;
+    font-family: "DynaPuff", cursive;
+    font-weight: 600;
     text-transform: lowercase;
-    transform: translateY(-2px);
+    letter-spacing: -0.03em;
   }
 
   .nav-projects:hover,
   .nav-projects.active {
-    color: #343A3F;
-    transform: translateY(-5px);
+    color: #eeb72b;
   }
 
   /* -------------------------------------------------- */
