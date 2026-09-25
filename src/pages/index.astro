@@ -161,7 +161,7 @@ import Headshot from "../assets/Headshot.jpg";
     }
     .hero-name {
       font-family: "Unbounded", sans-serif;
-      font-size: 7vw;
+      font-size: clamp(5rem, 10vw, 10rem);
       margin-bottom: 1.5rem;
       color: #212529;
       z-index: 1;
@@ -229,21 +229,21 @@ import Headshot from "../assets/Headshot.jpg";
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4vw;
+      gap: clamp(1rem, 4vw, 4rem);
       padding: 10rem 0 5rem;
     }
     .headshot {
-      height: 20rem;
+      height: clamp(10rem, 20vw, 24rem);
       width: auto;
     }
     .three-words {
       font-family: "Unbounded", sans-serif;
-      font-size: 3vw;
+      font-size: clamp( 2rem,4.5vw, 4.5rem);
       color: #2766a5;
       opacity: 0.8;
     }
     .introduction {
-      font-size: 1.5vw;
+      font-size: clamp(1rem, 2vw, 2rem);
       transform: scaleX(1.07);
       transform-origin: left;
       line-height: 1.2;
@@ -255,7 +255,7 @@ import Headshot from "../assets/Headshot.jpg";
     }
     .title {
       font-family: "Unbounded", sans-serif;
-      font-size: 4vw;
+      font-size: clamp(3rem,4vw,8rem);
       color: #2766a5;
       padding-bottom: 2rem;
     }
@@ -269,8 +269,8 @@ import Headshot from "../assets/Headshot.jpg";
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 20vw;
-      width: 16vw;
+      height: clamp(10rem,20vw,37rem);
+      aspect-ratio: 4/5;
       overflow: hidden;
       position: relative;
       background-color: #21252908;
@@ -305,7 +305,7 @@ import Headshot from "../assets/Headshot.jpg";
     }
     .redirect {
       text-decoration: none;
-      font-size: 2.5vw;
+      font-size: clamp(1.5rem,2.5vw,5rem);
       color: #212529;
       font-weight: 300;
       opacity: 0.4;
