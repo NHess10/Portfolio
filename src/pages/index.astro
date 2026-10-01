@@ -83,12 +83,15 @@ import Headshot from "../assets/Headshot.jpg";
   </section>
 
   <section class="description">
-    <Image src={Headshot} class="headshot" alt="Noah Hess headshot" />
-    <div class="three-words">
-      engaged<br />
-      curious<br />
-      precise
+    <div class="first">
+      <Image src={Headshot} class="headshot" alt="Noah Hess headshot" />
+      <div class="three-words">
+        engaged<br />
+        curious<br />
+        precise
+      </div>
     </div>
+
     <div class="introduction">
       i enjoy<br /><strong>connecting</strong> with people,<br /><strong
         >exploring</strong
@@ -233,6 +236,13 @@ import Headshot from "../assets/Headshot.jpg";
       gap: clamp(1rem, 4vw, 4rem);
       padding: 10rem 0 5rem;
     }
+    .first {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: clamp(1rem, 4vw, 4rem);
+    }
     .headshot {
       height: clamp(10rem, 20vw, 24rem);
       width: auto;
@@ -270,7 +280,7 @@ import Headshot from "../assets/Headshot.jpg";
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: clamp(10rem, 20vw, 37rem);
+      height: clamp(10rem, 30vw, 37rem);
       aspect-ratio: 4/5;
       overflow: hidden;
       position: relative;
@@ -335,6 +345,15 @@ import Headshot from "../assets/Headshot.jpg";
     .redirect:hover .underline {
       transform-origin: left;
       transform: scaleX(1);
+    }
+    @media (max-width: 768px) {
+      .description {
+        flex-direction: column;
+        gap: 7rem;
+      }
+      .headshot {
+        height: clamp(20rem, 1vw, 20vw);
+      }
     }
   </style>
 </BaseLayout>
